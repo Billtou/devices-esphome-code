@@ -1,7 +1,7 @@
 substitutions:
   name: "sonoff-basic"
   friendly_name: "Sonoff Basic"
-  project_name: "Taiwan Smart Home.Sonoff Basic Relay"
+  project_name: "Taiwan Smart Home Technology.Sonoff Basic Relay"
   project_version: "1.0"
   
 esphome:
