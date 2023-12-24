@@ -3,28 +3,30 @@ substitutions:
   friendly_name: "Sonoff Basic"
   project_name: "Taiwan Smart Home Technology.Sonoff Basic Relay"
   project_version: "1.0"
-  
+
 esphome:
-  name: $name
-  friendly_name: $friendly_name
-  name_add_mac_suffix: true
+  name: "${name}"
+  friendly_name: "${friendly_name}"
   project:
     name: "${project_name}"
-    version: "${project_version}"
-    
+    version: "${project_version}"  
+
 esp8266:
-  board: esp01_1m    
-  
+  board: esp01_1m
+
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
+  ap:
+    ssid: ${name}
+    password: "87654321"
 
 web_server:  
   port: 80
   
 logger:
 api:
-ota:  
+ota:
 
 # Device Specific Config
 binary_sensor:
@@ -52,21 +54,24 @@ switch:
     name: "Relay"
     pin: GPIO12
     id: relay
-    # on_turn_off:
+    on_turn_off:
       if:
         condition:
           - switch.is_on: blue_led
         then:
           - switch.turn_off: blue_led
-  # With this we can control the blue side of the LED. 
+  # With this we can control the blue side of the LED.
   - platform: gpio
     id: blue_led
     pin:
       number: GPIO13
       inverted: True
   - platform: restart
-    name: Sonoff Basic Restart       
-
+    name: Sonoff Basic Restart          
+button:
+  - platform: restart
+    name: Restart 
+    
 sensor:
   - platform: wifi_signal
     name: wifi signal
@@ -79,5 +84,4 @@ text_sensor:
     ssid:
       name: SSID
     mac_address:
-      name: MAC   
-    
+      name: Mac   
