@@ -66,8 +66,7 @@ switch:
     pin:
       number: GPIO13
       inverted: True
-  - platform: restart
-    name: Sonoff Basic Restart          
+
 button:
   - platform: restart
     name: Restart 
