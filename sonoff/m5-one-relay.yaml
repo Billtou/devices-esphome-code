@@ -80,9 +80,6 @@ light:
     id: backlight
 
 binary_sensor:
-  - platform: status
-    name: Esphome Status
-
   - platform: gpio
     id: button1
     pin:
